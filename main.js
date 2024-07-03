@@ -10,7 +10,7 @@ function startTimer() {
   let interval = setInterval(() => {
     
     timer.textContent = munit + ":" + second;
-    container
+    
     if (munit < 10) {
       timer.textContent = `0${munit}:0${second}`;
       if (second >= 10) {
