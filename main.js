@@ -6,21 +6,22 @@ function startTimer() {
   
   let munit = 0;
   let second = 0;
+  let milisec = 0;
   
   let interval = setInterval(() => {
     
-    timer.textContent = munit + ":" + second;
+    const disMunit = munit < 10 ? "0" + munit : munit;
+    const disSecond = second < 10 ? "0" + second : second;
+    const disMiliSecond = milisec < 10 ? "0" + milisec : milisec;
     
-    if (munit < 10) {
-      timer.textContent = `0${munit}:0${second}`;
-      if (second >= 10) {
-        timer.textContent = `0${munit}:${second}`;
-      }
-    }
+    timer.textContent = disMunit + ":" + disSecond + ":" + disMiliSecond;
     
-    second++;
+    milisec++;
     
-    if (second == 60) {
+    if (milisec == 100) {
+      second++;
+      milisec = 0;
+    } if (second == 60) {
       munit++;
       second = 0;
     }
@@ -31,7 +32,7 @@ function startTimer() {
       stopBtn.style.display = 'none';
     });
     
-  },1000);
+  },10);
 }
 
 startBtn.addEventListener("click",() => {
